@@ -1,6 +1,6 @@
 # phog
 
-dead simple crypto functions for fognet
+crypto functions for fognet and the web
 
 phog uses the Web Crypto API and base 58 encoding
 
@@ -12,17 +12,17 @@ const configs = {
   sign: {
     algo: {name: 'ECDSA', namedCurve: 'P-256'},
     usage: ['sign', 'verify'],
-    export: {public:'spki', private:'pkcs8'}
+    format: {public:'spki', private:'pkcs8'}
   },
   derive: {
     algo: {name:'ECDH', namedCurve:'P-256'},
     usage: ['deriveKey'],
-    export: {public:'spki', private:'pkcs8'}
+    format: {public:'spki', private:'pkcs8'}
   },
   encrypt: {
     algo: {name:'AES-GCM', length: 256},
     usage: ['encrypt', 'decrypt'],
-    export: {public:'raw', private:'raw'},
+    format: {public:'raw', private:'raw'},
     ivFunc: () => window.crypto.getRandomValues(new Uint8Array(12))
   }
 }
