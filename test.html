@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>phog</title>
+<link rel="shortcut icon" type="image/x-icon" href="data:image/x-icon;,">
 <script type="text/javascript" src="./dist/phog.min.js"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@ test.addEventListener('click',function(){
 async function testSigning(){
   const key = await phog.keyGen(phog.configs.sign)
 	const msg = message.value // app code
-  //const h = await hasher(message)
+  //const h = await hash(message)
 
   // const pk = await exportKey(key.privateKey, configs.sign, 'private')
   // const pk2 = await importKey(pk, configs.sign, 'private')
@@ -75,6 +76,24 @@ textarea{background:grey;color:white;height:25px}
 button{background:grey;padding:8px 10px;vertical-align:top;cursor:pointer;}
 p{word-break:break-all;}
 </style>
+
+<script>
+  var favIcon = 'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAT2SURBVHgBrVdJbFtVFD3v+3vKZDskKKSlCR3StJuoFWKDRFIFEAtWbFkkdMMkQdodmyapEGJVEZCqsoEEiT2RgFWakkStoCpNu4AGkramKAPNYDvf8/Ae933b/387346T9krP/n7vvnvPPXewDTyBzD0UH8/dF/OzS9lB7FMY9iFzi5k+ONRhCNFnMRTMpFNnzpzwBrEH2ROAa/PC7/BjmHExVNkgG8+kk6O1AqkZgKQbXIzQo383XckGF3z0laPqeA26uzi2obtWqSUtFQHUQnftQCqnxRbAXuiuHYR9WpRyxZEb4ho5/+JpOpcigE7GlG8/vSHmrftqueLUKvpCKYb+NoGAC09NHkSBq2sMD6Olgal2yr9vycXwahvwcquAx4F9SzJHQZHj6+v5z+U53wFACEwwhgH5PLVWBCJwuhl7FhnIj8tMB1GQMOcYs+rYFaHy4vfhTre7aZox1lHcPOkD3jxQW1pWEsBP5FjSbggXM8n09tlbb/uD8lNVAPLlpd/uBRrdXVczy0oPT5qH1dJSTrduzAO4DuYmp3rUtyw+c1UBvL6m9Tk93m/otIMnicIHDJkVU1WyUJ6WPyN5ukNpc891iIAeFmBOIdsgKDi/+HPANQ69KSoAeG0r/YtLdfTmdZheFFIkkNgtBVY2ZFokG7K6rXQ7AoD3OIejEfn7zHSjJRNjs882DFUEcGJxVTR6vQjU10F1OAwAeSMCaWIidb8UiGGMStrTxeFqF6b1wmOWqm89so1ENhO8d/S5F4p3bNtQSySQSKcJRD0avZ78ZgGIq50uBThSjxjSj0z8Bt2qBXAh+lA0hkg8TnUodoRcsQ2zuRzWt7cRisXQ3hyAqih5g7RkYXm7BNyHGBJ/K3A/z6EW60GYtpKZDB5T1DJ6Q7iYtPqzK0J2fGF5UGFsGIrZhrZpsRNCz8nhY01DPJmyBMbvCi7O/dV9cAY1tKGevQMr16ebYod7iwfSua/OS6tuJ4hCoUXiCZ01XoiaK2lE6pdm1tr6+2HyswsAbaQPXscFOu515hrQsnUK/mgXrEDa/E1wqU4UuyVJNbOpRZHKZg09re4f/PfMr8ioGqkoQaxr/Wj7PFgdgPbZGLy5j8q3fQSgNXQazmyDsdfo8cBHhRqlog1TkRUlo0ax0jqLuGe1pBP056RjAvWfDFYGsHSF5i0Z88fzNwWpMFEIlKEldEoHYoilzyXdm74/sOG/XXBsaUdOmQ1T6rbpR8mR96q3IUKkqLmhA2lIwRrGhn8ekYZFtIQpLVqX4TxG0a5S1Drd+gCDMTsQpbbZrM+D2K0NSYK0OpGlal+nUZZw5oGoxbQJneLVFknxGnzaMWwEbuvPRrhFvBmysUEpSzotjOGO1ZltG2Lh8iAc1IbFb0NJZXOikBaUTkdrfovjmzNJdZ5J03MYaZzFyfd/gGVaKLYAuj/4jhq5n4bGhOFIGvuXpk3UbbEpCrYsKOL0TbXsL3XOxZdYShwh55MoC7rqHNDfb17qQMA7DctvAzQk82yoOZMJPWXldIsZmkbn0XPuLkpmZG2DCCWXFi4P2KZFFqksWEk5N66FIZRRHHv3KyMQ05aVsor/C5jlrJQNv/cCjegBVJYxLMUv4o3zYZQ63uG8GgA7IKbcvNS5Iy2S7hwfRfeHs+VO7BzvVRTLchSWQml5B4tX7mDx6yFjz3wvrqryP84/PB3odky4AAAAAElFTkSuQmCC'
+  var docHead = document.getElementsByTagName('head')[0];       
+  var newLink = document.createElement('link');
+  newLink.rel = 'shortcut icon';
+  newLink.href = 'data:image/png;base64,'+favIcon;
+  docHead.appendChild(newLink);
+  var iconLink = document.createElement('link')
+  iconLink.rel = 'icon';
+  iconLink.href = 'data:image/png;base64,'+favIcon;
+  docHead.appendChild(iconLink);
+  var appleLink = document.createElement('link')
+  appleLink.rel = 'icon';
+  appleLink.href = 'data:image/png;base64,'+favIcon;
+  docHead.appendChild(appleLink);
+</script>
+
 </body>
 </html>
 

@@ -1,9 +1,13 @@
 # phog
+
 dead simple crypto functions for fognet
+
 phog uses the Web Crypto API and base 58 encoding
+
 open test.html in any browser to test
+
 ### phog configs
-```json
+```javascript
 const configs = {
   sign: {
     algo: {name: 'ECDSA', namedCurve: 'P-256'},

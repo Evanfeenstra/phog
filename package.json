@@ -1,6 +1,6 @@
 {
   "name": "phog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dead simple crypto module for Fognet",
   "author": "Evan Feenstra <evan@evan.cool>",
   "main": "index.js",
