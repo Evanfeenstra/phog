@@ -1,9 +1,10 @@
 {
   "name": "phog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Dead simple crypto module for Fognet",
   "author": "Evan Feenstra <evan@evan.cool>",
   "main": "index.js",
+  "keywords": ["fognet", "crypto", "cryptography", "encryption", "web crypto api", "web crypto", "iota", "digital signature", "aes", "ecdsa", "ecdh", "derivation", "key"],
   "dependencies": {
     "simple-base": "^0.2.1"
   },

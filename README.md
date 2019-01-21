@@ -1,5 +1,9 @@
 # phog
 
+```bash
+yarn add phog
+```
+
 crypto functions for fognet and the web
 
 phog uses the Web Crypto API and base 58 encoding
