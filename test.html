@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>phog</title>
+<script type="text/javascript" src="./dist/phog.min.js"></script>
+</head>
+<body>
+<h1>phog</h1>
+<textarea id="message"></textarea>
+<button id="test">test</button>
+<p id="signature"></p>
+<p id="publickey"></p>
+<p id="verified"></p>
+<p id="derived"></p>
+<p id="isdecrypted"></p>
+<script>
+
+message.value = "hello"
+test.addEventListener('click',function(){
+  testSigning()
+  testEncryption()
+})
+
+async function testSigning(){
+  const key = await phog.keyGen(phog.configs.sign)
+	const msg = message.value // app code
+  //const h = await hasher(message)
+
+  // const pk = await exportKey(key.privateKey, configs.sign, 'private')
+  // const pk2 = await importKey(pk, configs.sign, 'private')
+  const sig = await phog.sign(msg, key.privateKey)
+  console.log('Signature: ' + sig)
+  signature.innerHTML = 'Signature: ' + sig
+
+  const ecdsaPubKey = await phog.exportKey(key.publicKey, phog.configs.sign)
+  console.log('public signature verification key:',ecdsaPubKey)
+  publickey.innerHTML = 'Public key: ' + ecdsaPubKey
+  const importedPubKey = await phog.importKey(ecdsaPubKey, phog.configs.sign)
+  const verified = await phog.verify(msg, sig, importedPubKey)
+
+  console.log("Signature verified:",verified)
+  verified.innerHTML = "Signature verified: " + (verified ? 'true':'false')
+}
+
+async function testEncryption() {
+  // key exchange 
+  const pair1 = await phog.keyGen(phog.configs.derive); // alice
+  const pair2 = await phog.keyGen(phog.configs.derive); // bob
+  // const exportedPub = await exportKey(pair1.publicKey, configs.derive)
+  // console.log("EXPORT PUB",exportedPub)
+
+  const secret1 = await phog.deriveKey(pair1.privateKey, pair2.publicKey)
+  const secret2 = await phog.deriveKey(pair2.privateKey, pair1.publicKey)
+  const k1 = await phog.exportKey(secret1, phog.configs.encrypt)
+  const k2 = await phog.exportKey(secret2, phog.configs.encrypt)
+  console.log('derived symmetric key:',k1,k1===k2)
+  derived.innerHTML = 'Derived symmetric key: ' + k1
+
+  const msg = message.value
+  const encrypted = await phog.encrypt(msg, secret1)
+  //console.log(encrypted)
+
+  const decrypted = await phog.decrypt(encrypted, secret2)
+  console.log('decrypted:',msg===decrypted)
+  isdecrypted.innerHTML = 'Decrypted: ' + decrypted
+}
+
+testSigning()
+testEncryption()
+
+</script>
+<style> 
+body{font-family:Helvetica;background:black;color:grey;}
+textarea{background:grey;color:white;height:25px} 
+button{background:grey;padding:8px 10px;vertical-align:top;cursor:pointer;}
+p{word-break:break-all;}
+</style>
+</body>
+</html>
+
