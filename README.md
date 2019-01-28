@@ -4,25 +4,26 @@
 yarn add phog
 ```
 
-crypto functions for fognet and the web
-
 phog uses the Web Crypto API and base 58 encoding
 
-open test.html in any browser to test
+clone the repo and open test.html in a browser to test
 
 ### phog configs
 ```javascript
-const configs = {
+phog.configs = {
+  // ellpitic curve used for signatures
   sign: {
     algo: {name: 'ECDSA', namedCurve: 'P-256'},
     usage: ['sign', 'verify'],
     format: {public:'spki', private:'pkcs8'}
   },
+  // create a shared secret with a friend's public key
   derive: {
     algo: {name:'ECDH', namedCurve:'P-256'},
     usage: ['deriveKey'],
     format: {public:'spki', private:'pkcs8'}
   },
+  // symmetric encrypt using that secret
   encrypt: {
     algo: {name:'AES-GCM', length: 256},
     usage: ['encrypt', 'decrypt'],
